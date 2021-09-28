@@ -30,8 +30,8 @@ const textureLoader = new THREE.TextureLoader()
 
 
 var images = [
-    { path: './textures/sample-07.jpg', width: 624 / 2, height: 468 / 2 },
-    { path: './textures/sample-01.png', width: 320, height: 180 },
+    { path: '/textures/sample-07.jpg', width: 624 / 2, height: 468 / 2 },
+    { path: '/textures/sample-01.png', width: 320, height: 180 },
 
 ]
 var imageIndex = 0

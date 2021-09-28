@@ -6,7 +6,6 @@
     "dev": "webpack serve --config ./bundler/webpack.dev.js",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://samstoppani.github.io/particlesImageRender/",
   "dependencies": {
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
