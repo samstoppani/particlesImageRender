@@ -11,7 +11,7 @@ import Particles  from './Particles'
  * Base
  */
 // Debug
-const gui = new dat.GUI()
+// const gui = new dat.GUI()
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -27,11 +27,14 @@ const textureLoader = new THREE.TextureLoader()
 /**
  * Create particles image
  */
-
-
 var images = [
-    { path: './textures/sample-07.jpg', width: 624 / 2, height: 468 / 2 },
-    { path: './textures/sample-01.png', width: 320, height: 180 },
+
+    { path: './textures/image-01.jpg', width: 300 * 3/4, height: 129 * 3/4},
+    { path: './textures/image-02.jpg', width: 250 , height: 197 },
+    { path: './textures/image-03.jpg', width: 200 , height: 200 },
+    { path: './textures/image-04.jpg', width: 300 , height: 158 },
+    { path: './textures/image-05.jpg', width: 250 , height: 146 },
+    { path: './textures/image-06.jpg', width: 250 , height: 141 },
 
 ]
 var imageIndex = 0
@@ -69,6 +72,8 @@ window.addEventListener('resize', () =>
 const raycaster = new THREE.Raycaster()
 const mouse = new THREE.Vector2()
 
+const parent = document.querySelector(".content");
+
 window.addEventListener('mousemove', (event) => {
  
     mouse.x = (event.clientX / sizes.width * 2) - 1
@@ -76,7 +81,16 @@ window.addEventListener('mousemove', (event) => {
 
 })
 
-window.addEventListener('click', () => {
+parent.addEventListener('touchmove', (event) => {
+
+    mouse.x = (event.touches[0].clientX / sizes.width * 2) - 1
+    mouse.y = - (event.touches[0].clientY / sizes.height) * 2 + 1
+
+})
+
+
+
+parent.addEventListener('click', () => {
 
     particles.destroyParticles()
 
@@ -94,7 +108,9 @@ window.addEventListener('click', () => {
         particles.dispersion = 100;
         particles.initTexture()
         particles.createParticles(nextImage.width, nextImage.height)
-    }, 1000)
+
+        document.getElementById('imageNumber').innerHTML = imageIndex + 1
+    }, 1500)
 
 
 })
@@ -108,9 +124,9 @@ camera.position.set(0.25, - 0.25, 200)
 scene.add(camera)
 
 
-// Controls
-const controls = new OrbitControls(camera, canvas)
-controls.enableDamping = true
+// // Controls
+// const controls = new OrbitControls(camera, canvas)
+// controls.enableDamping = true
 
 /**
  * Renderer
@@ -142,8 +158,8 @@ const tick = () =>
     }
     particles.updateParticles(elapsedTime)
 
-    // Update controls
-    controls.update()
+    // // Update controls
+    // controls.update()
 
     // Render
     renderer.render(scene, camera)

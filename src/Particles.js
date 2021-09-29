@@ -207,7 +207,7 @@ export default class Particles {
             self.scene.remove(image)
 
             self.disperseDirection = 'in'
-        }, 1000)
+        }, 1500)
 
 
     }
