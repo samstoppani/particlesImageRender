@@ -1,7 +1,5 @@
 import './style.css'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import * as dat from 'dat.gui'
 import vertexShader from './shaders/test/vertex.glsl'
 import fragmentShader from './shaders/test/fragment.glsl'
 
@@ -10,9 +8,6 @@ import Particles  from './Particles'
 /**
  * Base
  */
-// Debug
-// const gui = new dat.GUI()
-
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
 
@@ -29,8 +24,8 @@ const textureLoader = new THREE.TextureLoader()
  */
 var images = [
 
-    { path: './textures/image-01.jpg', width: 300 * 3/4, height: 129 * 3/4},
-    { path: './textures/image-02.jpg', width: 250 , height: 197 },
+    { path: './textures/image-01.jpg', width: 300 * 3/4, height: 129 * 3/4 },
+    { path: './textures/image-02.jpg', width: 250 * 3/4, height: 197 * 3/4 },
     { path: './textures/image-03.jpg', width: 200 , height: 200 },
     { path: './textures/image-04.jpg', width: 300 , height: 158 },
     { path: './textures/image-05.jpg', width: 250 , height: 146 },
@@ -123,11 +118,6 @@ const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 
 camera.position.set(0.25, - 0.25, 200)
 scene.add(camera)
 
-
-// // Controls
-// const controls = new OrbitControls(camera, canvas)
-// controls.enableDamping = true
-
 /**
  * Renderer
  */
@@ -157,9 +147,6 @@ const tick = () =>
         particles.updateTouchTrail(intersect.uv)
     }
     particles.updateParticles(elapsedTime)
-
-    // // Update controls
-    // controls.update()
 
     // Render
     renderer.render(scene, camera)
